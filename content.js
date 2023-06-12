@@ -19,10 +19,10 @@ chrome.runtime.onMessage.addListener(
     content.style.border = '1px solid #888';
     content.style.width = '80%';
     content.style.textAlign = 'center';
-    content.style.fontSize = '50px';
+    content.style.fontSize = '20px';
 
     // Add the risk score to the content
-    content.textContent = "Security Risk Score:" + request.score;
+    content.textContent = "Security Risk Score: " + request.score + " Summary: " + JSON.stringify(request.summary);
 
     // Add the content to the modal
     modal.appendChild(content);

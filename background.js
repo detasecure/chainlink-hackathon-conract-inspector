@@ -24,6 +24,6 @@ function fetchRiskScore(contractAddress, tabId) {
       } else {
         color = 'green';
       }
-      chrome.tabs.sendMessage(tabId, {color: color, score: riskScore});
+      chrome.tabs.sendMessage(tabId, {color: color, score: riskScore, summary: data.result_summary});
     });
 }
