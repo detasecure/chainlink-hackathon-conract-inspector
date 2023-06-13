@@ -36,3 +36,46 @@ chrome.runtime.onMessage.addListener(
     };
   }
 );
+
+// // Create the hidden input element
+// const inputElement = document.createElement('input');
+// inputElement.type = 'hidden';
+// inputElement.id = 'result_ace_blah';
+// // Append the input element to the document body
+// document.body.appendChild(inputElement);        
+
+
+
+
+// Listen for messages from the background script
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//   if (message.action === 'getEditorValue') {
+//     // Find the ACE editor by its ID
+
+
+//     // // Listen for the custom event raised in content.js
+//     // document.addEventListener('resultUpdated', (event) => {
+//     //   const resultValue = event.detail;
+//     //   console.log('Result value updated:', resultValue);
+//     //   sendResponse({ value: editorValue }); 
+//     // });
+
+//     // Create a <script> element
+//     const script = document.createElement('script');
+//     // Set the source attribute to the URL of your JavaScript file
+//     script.src = chrome.runtime.getURL('ace-interaction.js');
+//     // Append the <script> element to the document body
+//     document.body.appendChild(script);
+
+
+
+//     // const editor = ace.edit("ace-editor-contract-code");
+//     // if (editor) {
+//     //   // Get the value of the ACE editor
+//     //   const editorValue = editor.getValue();
+//     //   sendResponse({ value: editorValue });
+//     // } else {
+//     //   sendResponse({ value: null });
+//     // }
+//   }
+// });
