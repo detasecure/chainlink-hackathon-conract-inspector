@@ -31,7 +31,6 @@ function waitForAceEditor() {
 
 
 function fetchRiskScore(tabId) {
-  var contractAddress = "0x2e8E412F5843411171C53B765BBB0913156CE3D4";
   let apiUrl = `http://3.108.126.225:8080/api/get_risk_score_polygon_mainnet_verified_contract?smart_contract_address=${contractAddress}`;
   fetch(apiUrl)
     .then(response => response.json())
