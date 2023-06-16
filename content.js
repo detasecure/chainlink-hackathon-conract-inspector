@@ -3,9 +3,16 @@ chrome.runtime.onMessage.addListener(
     if (request.action === 'getFlowCode') {
       console.log('dummy in content.js');
       // triggerCopyAndReadClipboard();
+      triggerFlowScoring()
     }
-    else {
-      // Create the modal
+    else if (request.action === 'updateRiskScore') {
+      displayResultInModal(request.color, request.score, request.summary)
+    }
+  }
+);
+
+function displayResultInModal(color, score, summary) {
+        // Create the modal
       let modal = document.createElement('div');
       modal.style.position = 'fixed';
       modal.style.zIndex = 1000;
@@ -18,7 +25,7 @@ chrome.runtime.onMessage.addListener(
 
       // Create the content
       let content = document.createElement('div');
-      content.style.backgroundColor = request.color;
+      content.style.backgroundColor = color;
       content.style.margin = '15% auto';
       content.style.padding = '20px';
       content.style.border = '1px solid #888';
@@ -26,9 +33,9 @@ chrome.runtime.onMessage.addListener(
       content.style.textAlign = 'center';
       content.style.fontSize = '20px';
 
-      delete request.summary['Optimization'];
+      delete summary['Optimization'];
       // Add the risk score to the content
-      content.textContent = "Security Risk Score: " + request.score + " Summary: " + JSON.stringify(request.summary);
+      content.textContent = "Security Risk Score: " + score + " Summary: " + JSON.stringify(summary);
 
       // Add the content to the modal
       modal.appendChild(content);
@@ -40,11 +47,26 @@ chrome.runtime.onMessage.addListener(
       modal.onclick = function() {
         document.body.removeChild(modal);
       };
-    }
-  }
-);
+}
 
 
+function triggerFlowScoring() {
+
+  // // Create the hidden input element
+  // const inputElement = document.createElement('input');
+  // inputElement.type = 'hidden';
+  // inputElement.id = 'result_ace_blah';
+  // // Append the input element to the document body
+  // document.body.appendChild(inputElement);        
+
+  // Create a <script> element
+  const script = document.createElement('script');
+  // Set the source attribute to the URL of your JavaScript file
+  script.src = chrome.runtime.getURL('ace-interaction.js');
+  // Append the <script> element to the document body
+  document.body.appendChild(script);
+
+}
 
 function triggerCopyAndReadClipboard() {
     // Find the "Copy" button using XPath and simulate a click event
@@ -65,12 +87,6 @@ function triggerCopyAndReadClipboard() {
 }
 
 
-// // Create the hidden input element
-// const inputElement = document.createElement('input');
-// inputElement.type = 'hidden';
-// inputElement.id = 'result_ace_blah';
-// // Append the input element to the document body
-// document.body.appendChild(inputElement);        
 
 
 
@@ -88,12 +104,6 @@ function triggerCopyAndReadClipboard() {
 //     //   sendResponse({ value: editorValue }); 
 //     // });
 
-//     // Create a <script> element
-//     const script = document.createElement('script');
-//     // Set the source attribute to the URL of your JavaScript file
-//     script.src = chrome.runtime.getURL('ace-interaction.js');
-//     // Append the <script> element to the document body
-//     document.body.appendChild(script);
 
 
 

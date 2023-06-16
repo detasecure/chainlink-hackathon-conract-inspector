@@ -1,13 +1,88 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+  <title>GETSecured Contract Inspector</title>
   <style>
     body {
-      font-size: 50px;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .score {
+      font-size: 48px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    .high-risk {
+      color: red;
+    }
+
+    .medium-risk {
+      color: orange;
+    }
+
+    .low-risk {
+      color: yellow;
+    }
+
+    .safe {
+      color: green;
+    }
+
+    .message {
+      margin-top: 10px;
+      color: #666;
+    }
+
+    .telegram-logo {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('telegram-logo.png');
+      background-size: cover;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+
+    .telegram-handle {
+      color: #0069d9;
+      text-decoration: none;
     }
   </style>
 </head>
+
 <body>
-  <div>Thank you! Looking for feedback, support, grants etc. <br/><br/> DM me in TG: @mnkbuddh.</div>
+  <h1>GETSecured Contract Inspector</h1>
+  <div class="score" id="score"></div>
+  <div class="message"><h3>Thank you! <br/> <br/> Looking for feedback, support, grants etc.</h3></div>
+  <div class="message">DM: <a href="https://t.me/mnkbuddh" target="_blank" class="telegram-handle">TG:
+      @mnkbuddh<span class="telegram-logo"></span></a></div>
+  <!-- <script>
+    // Listen for the resultUpdated event raised in content.js or background.js
+    document.addEventListener('updateRiskScore', function (event) {
+      const scoreElement = document.getElementById('score');
+      const color = event.detail.color;
+      const score = event.detail.score;
+      const summary = event.detail.summary;
+
+      // Update the score element with the risk score and color
+      scoreElement.textContent = score;
+      scoreElement.classList.add(color);
+
+      // Add the summary message after the score
+      const messageElement = document.createElement('div');
+      messageElement.textContent = summary;
+      scoreElement.insertAdjacentElement('afterend', messageElement);
+    });
+  </script> -->
 </body>
+
 </html>
